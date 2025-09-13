@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink - Profile</title>
+    <link rel="stylesheet" href="user-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="Landing Page/Landing-page.html" class="logo">BloodLink</a>
+        <div class="nav-links">
+            <a href="Donor.html">Become Donor</a>
+            <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Blood Request\receiver-request.html">Request Blood</a>
+            <a href="user-profile.html">Profile</a>
+        </div>
+    </nav>
+    
+    <main class="container profile-container">
+        <h1 class="title">Your Profile</h1>
+        <div id="noProfile" class="no-profile hidden">
+          <!-- <p class="no-profile-message">You haven't registered as a donor yet.</p> -->
+            <a href="Donor.html" class="btn primary register-btn">Register as Donor</a>
+        </div>
+        <div class="profile-card hidden" id="profileCard">
+            <div class="profile-avatar"></div>
+            <div class="profile-details">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Blood Type:</strong> <span id="profileBlood"></span></p>
+                <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>City:</strong> <span id="profileLocation"></span></p>
+                <p><strong>Donation Frequency:</strong> <span id="profileFrequency"></span></p>
+                <p><strong>Accessibility:</strong> <span id="profileAccessibility">Within city (mock)</span></p>
+                <p><strong>Status:</strong> <span id="profileStatus"></span></p>
+            </div>
+            <h2 class="subtitle">Donation History</h2>
+            <ul id="historyList" class="history-list"></ul>
+            <div class="profile-actions">
+                <button class="btn secondary" id="addDonationBtn">Add Donation</button>
+                <button class="btn secondary" id="editProfileBtn">Edit Profile</button>
+            </div>
+            <div id="updateMessage" class="update-message hidden"></div>
+        </div>
+
+        <!-- Add Donation Form (Hidden by default) -->
+        <form id="addDonationForm" class="form donation-form hidden">
+            <div class="form-group">
+                <label for="donationDate">Donation Date</label>
+                <input type="date" id="donationDate" required>
+            </div>
+            <div class="form-group">
+                <label for="donationUnits">Units Donated</label>
+                <input type="number" id="donationUnits" min="1" max="2" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn primary" id="saveDonationBtn">Add Donation</button>
+                <button type="button" class="btn secondary" id="cancelDonationBtn">Cancel</button>
+            </div>
+        </form>
+
+        <!-- Edit Profile Form (Hidden by default) -->
+        <form id="editProfileForm" class="form edit-form hidden">
+            <div class="form-group">
+                <label for="editName">Full Name</label>
+                <input type="text" id="editName" required>
+            </div>
+            <div class="form-group">
+                <label for="editBloodType">Blood Type</label>
+                <select id="editBloodType" required>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="form-group contact-group">
+                <label for="editPhoneNumber">Contact Number</label>
+                <div class="phone-input-group">
+                    <select id="editCountryCode" required>
+                        <option value="">Select Country</option>
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+234">+234 (Nigeria)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+33">+33 (France)</option>
+                        <option value="+81">+81 (Japan)</option>
+                    </select>
+                    <input type="tel" id="editPhoneNumber" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editEmail">Email (Optional)</label>
+                <input type="email" id="editEmail">
+            </div>
+            <div class="form-group">
+                <label for="editLocation">City</label>
+                <input type="text" id="editLocation" required>
+            </div>
+            <div class="form-group">
+                <label for="editFrequency">Donation Frequency</label>
+                <select id="editFrequency" required>
+                    <option value="Every 3 months">Every 3 months</option>
+                    <option value="Every 6 months">Every 6 months</option>
+                    <option value="Once a year">Once a year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editStatus">Status</label>
+                <select id="editStatus" required>
+                    <option value="Active Donor">Active Donor</option>
+                    <option value="Inactive Donor">Inactive Donor</option>
+                    <option value="Receiver">Receiver</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn primary" id="saveEditBtn">Save Changes</button>
+                <button type="button" class="btn secondary" id="cancelEditBtn">Cancel</button>
+            </div>
+        </form>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 BloodLink. Connecting Lives.</p>
+    </footer>
+    
+    <script src="user-profile.js"></script>
+</body>
+</html>

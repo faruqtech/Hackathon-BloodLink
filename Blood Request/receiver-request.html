@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink - Request Blood</title>
+    <link rel="stylesheet" href="receiver-request.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Form page\Landing Page\Landing-page.html" class="logo">BloodLink</a>
+        <div class="nav-links">
+            <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Form page\Donor.html">Become Donor</a>
+            <a class="receiver-request" href="C:\Users\Administrator\Desktop\Unilag Hackathon\Blood Request\receiver-request.html" >Request Blood</a>
+            <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Form page\user-profile.html">Profile</a>
+        </div>
+    </nav>
+    
+    <main class="container form-container">
+        <h1 class="title">Request Blood</h1>
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">Request Details</div>
+            <div class="progress-step" data-step="2">Review & Submit</div>
+            <div class="progress-step" data-step="3">View Matches</div>
+        </div>
+        <form id="requestForm" class="form request-form">
+            <!-- Step 1: Request Details -->
+            <div class="form-step" data-step="1">
+                <div class="form-group">
+                    <label for="reqBloodType">Blood Type Needed</label>
+                    <select id="reqBloodType" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reqQuantity">Quantity (Units)</label>
+                    <input type="number" id="reqQuantity" min="1" max="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="reqUrgency">Urgency</label>
+                    <select id="reqUrgency" required>
+                        <option value="">Select</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High (Emergency)</option>
+                    </select>
+                </div>
+                <div class="form-group contact-group">
+                    <label for="reqContact">Your Contact</label>
+                    <div class="phone-input-group">
+                        <select id="reqCountryCode" required>
+                            <option value="">Select Country</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+234">+234 (Nigeria)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+91">+91 (India)</option>
+                            <option value="+33">+33 (France)</option>
+                            <option value="+81">+81 (Japan)</option>
+                        </select>
+                        <input type="tel" id="reqPhoneNumber" required>
+                    </div>
+                    <input type="email" id="reqEmail" placeholder="Your Email (Optional)">
+                </div>
+                <div class="form-group">
+                    <label for="reqLocation">Your Location (City)</label>
+                    <input type="text" id="reqLocation" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn primary" id="nextStep1">Next</button>
+                </div>
+            </div>
+            <!-- Step 2: Review & Submit -->
+            <div class="form-step hidden" data-step="2">
+                <div class="confirmation">
+                    <h2 class="subtitle">Review Your Request</h2>
+                    <p><strong>Blood Type:</strong> <span id="reviewBlood"></span></p>
+                    <p><strong>Quantity:</strong> <span id="reviewQuantity"></span> units</p>
+                    <p><strong>Urgency:</strong> <span id="reviewUrgency"></span></p>
+                    <p><strong>Contact:</strong> <span id="reviewContact"></span></p>
+                    <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                    <p><strong>Location:</strong> <span id="reviewLocation"></span></p>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary" id="prevStep2">Back</button>
+                    <button type="submit" class="btn primary urgent">Submit Request</button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Matches Section (Hidden by default) -->
+        <div id="matchesSection" class="matches-section hidden">
+            <h2 class="subtitle">Potential Donors</h2>
+            <div class="filter-bar">
+                <input type="text" id="searchInput" placeholder="Search by name or city" class="search-input">
+                <select id="filterBloodType">
+                    <option value="">All Blood Types</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+                <select id="filterLocation">
+                    <option value="">All Locations</option>
+                    <!-- Dynamically populated in JS -->
+                </select>
+                <button id="clearFilters" class="btn secondary">Clear Filters</button>
+            </div>
+            <div id="donorMatches" class="matches-grid"></div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 BloodLink. Connecting Lives.</p>
+    </footer>
+    
+    <script src="receiver-request.js"></script>
+</body>
+</html>

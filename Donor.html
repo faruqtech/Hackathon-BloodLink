@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink - Become a Donor</title>
+    <link rel="stylesheet" href="Donor.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Form page\Landing Page\Landing-page.html" class="logo">BloodLink</a>
+        <div class="nav-links">
+            <a class="donor-header" href="Donor.html">Become Donor</a>
+            <a href="C:\Users\Administrator\Desktop\Unilag Hackathon\Blood Request\receiver-request.html">Request Blood</a>
+            <a href="user-profile.html">Profile</a>
+        </div>
+    </nav>
+    
+    <main class="container form-container">
+        <h1 class="title">Become a Blood Donor</h1>
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">Personal Info</div>
+            <div class="progress-step" data-step="2">Health Eligibility</div>
+            <div class="progress-step" data-step="3">Confirmation</div>
+        </div>
+        <form id="donorForm" class="form donor-form">
+            <!-- Step 1: Personal Info -->
+            <div class="form-step" data-step="1">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required aria-describedby="nameError">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="bloodType">Blood Type</label>
+                    <select id="bloodType" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" min="18" max="65" required aria-describedby="ageError">
+                    <span class="error-message" id="ageError"></span>
+                </div>
+                <div class="form-group contact-group">
+                    <label for="phoneNumber">Contact Number</label>
+                    <div class="phone-input-group">
+                        <select id="countryCode" required>
+                            <option value="">Select Country</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+234">+234 (Nigeria)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+91">+91 (India)</option>
+                            <option value="+33">+33 (France)</option>
+                            <option value="+81">+81 (Japan)</option>
+                        </select>
+                        <input type="tel" id="phoneNumber" required aria-describedby="contactError">
+                    </div>
+                    <span class="error-message" id="contactError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email" aria-describedby="emailError">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="location">City</label>
+                    <input type="text" id="location" required aria-describedby="locationError">
+                    <span class="error-message" id="locationError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="donationFrequency">Donation Frequency</label>
+                    <select id="donationFrequency" required>
+                        <option value="">Select</option>
+                        <option value="Every 3 months">Every 3 months</option>
+                        <option value="Every 6 months">Every 6 months</option>
+                        <option value="Once a year">Once a year</option>
+                    </select>
+                    <span class="error-message" id="frequencyError"></span>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn primary" id="nextStep1">Next</button>
+                </div>
+            </div>
+            <!-- Step 2: Health Eligibility -->
+            <div class="form-step hidden" data-step="2">
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="noRecentIllness" required>
+                    <label for="noRecentIllness">No recent illnesses (past 6 months)</label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="noBloodDisorders" required>
+                    <label for="noBloodDisorders">No blood disorders or chronic conditions</label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="weightEligible" required>
+                    <label for="weightEligible">Weight above 110 lbs (50 kg)</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary" id="prevStep2">Back</button>
+                    <button type="button" class="btn primary" id="nextStep2">Next</button>
+                </div>
+            </div>
+            <!-- Step 3: Confirmation -->
+            <div class="form-step hidden" data-step="3">
+                <div class="confirmation">
+                    <h2 class="subtitle">Confirm Your Details</h2>
+                    <p><strong>Name:</strong> <span id="confirmName"></span></p>
+                    <p><strong>Blood Type:</strong> <span id="confirmBlood"></span></p>
+                    <p><strong>Age:</strong> <span id="confirmAge"></span></p>
+                    <p><strong>Contact:</strong> <span id="confirmContact"></span></p>
+                    <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+                    <p><strong>City:</strong> <span id="confirmLocation"></span></p>
+                    <p><strong>Donation Frequency:</strong> <span id="confirmFrequency"></span></p>
+                    <p><strong>Eligibility:</strong> <span id="confirmEligibility"></span></p>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary" id="prevStep3">Back</button>
+                    <button type="submit" class="btn primary">Register as Donor</button>
+                </div>
+            </div>
+        </form>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 BloodLink. Connecting Lives.</p>
+    </footer>
+    
+    <script src="Donor.js"></script>
+</body>
+</html>
